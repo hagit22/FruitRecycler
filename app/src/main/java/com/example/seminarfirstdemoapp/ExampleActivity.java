@@ -25,10 +25,13 @@ public class ExampleActivity extends AppCompatActivity {
             return insets;
         });
 
-      //  checkIfFirstRun();
+        checkIfFirstRun();
 
 
 
+    }
+
+    private void checkIfFirstRun() {
     }
 
     public void moveActivities(View view) {
