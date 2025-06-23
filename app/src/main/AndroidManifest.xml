@@ -13,12 +13,12 @@
         android:theme="@style/Theme.SeminarFirstDemoApp"
         tools:targetApi="31">
         <activity
-            android:name=".TicTacToeFixed"
+            android:name=".FruitSeminarActivity"
             android:exported="true" >
 
         </activity>
         <activity
-            android:name=".ExampleActivity"
+            android:name=".FruitActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,11 +28,17 @@
 
         </activity>
         <activity
-            android:name=".DemoActivity"
+            android:name=".TicTacToeFixed"
+            android:exported="false" />
+        <activity
+            android:name=".ExampleActivity"
             android:exported="false"></activity>
         <activity
+            android:name=".DemoActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
