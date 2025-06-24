@@ -1,4 +1,4 @@
-package com.example.seminarfirstdemoapp;
+package com.example.fruitrecycler;
 
 import org.junit.Test;
 

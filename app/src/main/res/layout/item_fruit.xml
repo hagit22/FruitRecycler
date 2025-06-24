@@ -44,5 +44,13 @@
                 android:textSize="14sp"
                 android:textColor="#666666" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageViewLike"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/like_filled" />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

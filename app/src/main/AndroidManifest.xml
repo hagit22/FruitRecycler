@@ -10,13 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SeminarFirstDemoApp"
+        android:theme="@style/Theme.FruitRecycler"
         tools:targetApi="31">
-        <activity
-            android:name=".FruitSeminarActivity"
-            android:exported="true" >
-
-        </activity>
         <activity
             android:name=".FruitActivity"
             android:exported="true">
@@ -27,18 +22,6 @@
             </intent-filter>
 
         </activity>
-        <activity
-            android:name=".TicTacToeFixed"
-            android:exported="false" />
-        <activity
-            android:name=".ExampleActivity"
-            android:exported="false"></activity>
-        <activity
-            android:name=".DemoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

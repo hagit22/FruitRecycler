@@ -1,14 +1,17 @@
-package com.example.seminarfirstdemoapp;
+package com.example.fruitrecycler;
 
-public class FruitSeminarItem {
+public class FruitItem {
     private int imageResource;
     private String name;
     private String description;
+    private boolean like;
 
-    public FruitSeminarItem(int imageResource, String name, String description) {
+    public FruitItem(int imageResource, String name, String description, boolean like) {
         this.imageResource = imageResource;
         this.name = name;
         this.description = description;
+        this.like = like;
+
     }
 
     public int getImageResource() {
@@ -33,5 +36,13 @@ public class FruitSeminarItem {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isLiked() {
+        return like;
+    }
+
+    public void setLike(boolean like) {
+        this.like = like;
     }
 }

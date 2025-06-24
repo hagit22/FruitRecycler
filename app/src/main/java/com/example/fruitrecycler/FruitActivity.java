@@ -1,4 +1,4 @@
-package com.example.seminarfirstdemoapp;
+package com.example.fruitrecycler;
 
 import android.os.Bundle;
 
@@ -19,7 +19,7 @@ public class FruitActivity extends AppCompatActivity {
 
 
     private RecyclerView recyclerView;
-    private MyAdapter myAdapter;
+    private FruitAdapter fruitAdapter;
     private List<FruitItem> fruitList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +31,7 @@ public class FruitActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
         setUpRecyclerView();
-
-
     }
 
     private void setUpRecyclerView() {
@@ -44,15 +40,15 @@ public class FruitActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // Sample fruit data
         fruitList = new ArrayList<>();
-        fruitList.add(new FruitItem(R.drawable.apple, "Apple", "Rich in fiber and vitamin C."));
-        fruitList.add(new FruitItem(R.drawable.banana, "Banana", "Great source of potassium."));
-        fruitList.add(new FruitItem(R.drawable.orange, "Orange", "Loaded with vitamin C."));
-        fruitList.add(new FruitItem(R.drawable.strawberry, "Strawberry", "Full of antioxidants."));
-        fruitList.add(new FruitItem(R.drawable.watermelon, "Watermelon", "Very refreshing and hydrating."));
+        fruitList.add(new FruitItem(R.drawable.apple, "Apple", "Rich in fiber and vitamin C.", false));
+        fruitList.add(new FruitItem(R.drawable.banana, "Banana", "Great source of potassium.", false));
+        fruitList.add(new FruitItem(R.drawable.orange, "Orange", "Loaded with vitamin C.", false));
+        fruitList.add(new FruitItem(R.drawable.strawberry, "Strawberry", "Full of antioxidants.", false));
+        fruitList.add(new FruitItem(R.drawable.watermelon, "Watermelon", "Very refreshing and hydrating.", false));
         // Add more fruits as desired
 
-        myAdapter = new MyAdapter(fruitList);
-        recyclerView.setAdapter(myAdapter);
+        fruitAdapter = new FruitAdapter(fruitList);
+        recyclerView.setAdapter(fruitAdapter);
 
         // use ItemTouchHelper for drag and drop or swipe actions if needed
         // For example, you can implement drag and drop functionality here
@@ -67,7 +63,7 @@ public class FruitActivity extends AppCompatActivity {
                 int toPos = target.getAdapterPosition();
                 // Swap items and notify adapter
                 Collections.swap(fruitList, fromPos, toPos);
-                myAdapter.notifyItemMoved(fromPos, toPos);
+                fruitAdapter.notifyItemMoved(fromPos, toPos);
                 return true;
             }
 
@@ -75,7 +71,7 @@ public class FruitActivity extends AppCompatActivity {
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
                 fruitList.remove(position);
-                myAdapter.notifyItemRemoved(position);
+                fruitAdapter.notifyItemRemoved(position);
             }
         };
 

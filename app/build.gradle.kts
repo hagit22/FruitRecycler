@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.seminarfirstdemoapp"
+    namespace = "com.example.fruitrecycler"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.seminarfirstdemoapp"
+        applicationId = "com.example.fruitrecycler"
         minSdk = 28
         targetSdk = 35
         versionCode = 1
