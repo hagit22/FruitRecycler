@@ -51,35 +51,36 @@ public class FruitActivity extends AppCompatActivity {
         // Here is where the magic happens, and we click everything together!!
         fruitAdapter = new FruitAdapter(fruitList); // We create an adapter with the list of fruits
         recyclerView.setAdapter(fruitAdapter); // We connect the adapter to the recycler view
+        // Optional: Set item click listener if needed
+
 
         // use ItemTouchHelper for drag and drop or swipe actions if needed
-        // For example, you can implement drag and drop functionality here
-        // ItemTouchHelper for swipe-to-delete
         ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
-                ItemTouchHelper.UP | ItemTouchHelper.DOWN, // Enable drag directions
-                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT // Enable swipe left and right
-        ) {
-            @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-                int fromPos = viewHolder.getAdapterPosition();
-                int toPos = target.getAdapterPosition();
-                // Swap items and notify adapter
-                Collections.swap(fruitList, fromPos, toPos);
-                fruitAdapter.notifyItemMoved(fromPos, toPos);
-                return true;
-            }
+            ItemTouchHelper.UP | ItemTouchHelper.DOWN, // Enable drag directions
+            ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) // Enable swipe left and right
+            {
+                @Override
+                public boolean onMove(RecyclerView recyclerView,
+                                      RecyclerView.ViewHolder originViewHolder,
+                                      RecyclerView.ViewHolder targetViewHolder) {
+                    int fromPos = originViewHolder.getAdapterPosition();
+                    int toPos = targetViewHolder.getAdapterPosition();
+                    // Swap items and notify adapter
+                    Collections.swap(fruitList, fromPos, toPos);
+                    fruitAdapter.notifyItemMoved(fromPos, toPos);
+                    return true;
+                }
 
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                int position = viewHolder.getAdapterPosition();
-                fruitList.remove(position);
-                fruitAdapter.notifyItemRemoved(position);
+                @Override
+                public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                    int position = viewHolder.getAdapterPosition();
+                    fruitList.remove(position);
+                    fruitAdapter.notifyItemRemoved(position);
+                }
             }
-        };
-
+        ; // End of anonymous inner class
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
-        // Optional: Set item click listener if needed
 
-    }
+}

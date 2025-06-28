@@ -68,11 +68,11 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.MyViewHolder
         });
 
 
-        // beginner - option
-        // Set an OnClickListener on the itemView to handle clicks
-        // better is use an interface for click events
-
-        /* holder.itemView.setOnClickListener(new View.OnClickListener() {
+        // beginner option:
+        // Set an OnClickListener on the itemView to handle clicks (== anonymous inner class)
+        // (instead of the recommended way: using an interface for click events)
+        /*
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Handle click here, you have access to currentItem or position
@@ -92,7 +92,8 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.MyViewHolder
                     Toast.makeText(v.getContext(), "I LOVE: " + currentItem.getName() + "s", Toast.LENGTH_SHORT).show();
                 notifyItemChanged(currentPosition);
             }
-        }); */
+        });
+        */
 
     }
 
