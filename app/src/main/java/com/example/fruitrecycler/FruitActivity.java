@@ -31,13 +31,14 @@ public class FruitActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        setUpRecyclerView();
+        setUpFruitActivity();   // Alon called it setUpRecyclerView();
     }
 
-    private void setUpRecyclerView() {
+    private void setUpFruitActivity() {
 
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this)); // We use a linear layout manager for the recycler view
+
         // Sample fruit data
         fruitList = new ArrayList<>();
         fruitList.add(new FruitItem(R.drawable.apple, "Apple", "Rich in fiber and vitamin C.", false));
@@ -47,8 +48,9 @@ public class FruitActivity extends AppCompatActivity {
         fruitList.add(new FruitItem(R.drawable.watermelon, "Watermelon", "Very refreshing and hydrating.", false));
         // Add more fruits as desired
 
-        fruitAdapter = new FruitAdapter(fruitList);
-        recyclerView.setAdapter(fruitAdapter);
+        // Here is where the magic happens, and we click everything together!!
+        fruitAdapter = new FruitAdapter(fruitList); // We create an adapter with the list of fruits
+        recyclerView.setAdapter(fruitAdapter); // We connect the adapter to the recycler view
 
         // use ItemTouchHelper for drag and drop or swipe actions if needed
         // For example, you can implement drag and drop functionality here

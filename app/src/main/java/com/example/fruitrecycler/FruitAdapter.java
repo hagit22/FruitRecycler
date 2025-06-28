@@ -51,11 +51,28 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.MyViewHolder
         holder.textViewDescription.setText(currentItem.getDescription());
         holder.imageViewLike.setImageResource(currentItem.isLiked() ? R.drawable.like_filled : R.drawable.like_outline);
 
+        // Implemented with Lambda notation, (instead of using an anonymous inner class - like below)
+        holder.itemView.setOnClickListener(view -> {
+            Toast.makeText(view.getContext(), "Clicked: " + currentItem.getName(), Toast.LENGTH_SHORT).show();
+            Log.d("Adapter", "Clicked: " + currentItem.getName());
+        });
+
+        // Implemented with Lambda notation, (instead of using an anonymous inner class - like below)
+        holder.imageViewLike.setOnClickListener(view -> {
+            int currentPosition = holder.getAdapterPosition();
+            Log.d("Adapter", "Toggle Like: " + currentItem.getName());
+            currentItem.setLike(!currentItem.isLiked());
+            if (currentItem.isLiked())
+                Toast.makeText(view.getContext(), "I LOVE: " + currentItem.getName() + "s", Toast.LENGTH_SHORT).show();
+            notifyItemChanged(currentPosition);
+        });
+
 
         // beginner - option
         // Set an OnClickListener on the itemView to handle clicks
         // better is use an interface for click events
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+        /* holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Handle click here, you have access to currentItem or position
@@ -68,14 +85,14 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.MyViewHolder
             @Override
             public void onClick(View v) {
                 // Handle click here, you have access to currentItem or position
-                //holder.imageViewLike.setImageResource(currentItem.isLiked() ? R.drawable.like_filled : R.drawable.like_outline);
+                int currentPosition = holder.getAdapterPosition();
                 Log.d("Adapter", "Toggle Like: " + currentItem.getName());
                 currentItem.setLike(!currentItem.isLiked());
                 if (currentItem.isLiked())
                     Toast.makeText(v.getContext(), "I LOVE: " + currentItem.getName() + "s", Toast.LENGTH_SHORT).show();
-                notifyItemChanged(position);
+                notifyItemChanged(currentPosition);
             }
-        });
+        }); */
 
     }
 
