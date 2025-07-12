@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.fruitrecycler.data.FruitItem;
+
 import java.util.List;
 
 public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.MyViewHolder> {
@@ -49,7 +52,7 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.MyViewHolder
         holder.imageViewItem.setImageResource(currentItem.getImageResource());
         holder.textViewTitle.setText(currentItem.getName());
         holder.textViewDescription.setText(currentItem.getDescription());
-        holder.imageViewLike.setImageResource(currentItem.isLiked() ? R.drawable.like_filled : R.drawable.like_outline);
+        holder.imageViewLike.setImageResource(currentItem.getLike() ? R.drawable.like_filled : R.drawable.like_outline);
 
         // Implemented with Lambda notation, (instead of using an anonymous inner class - like below)
         holder.itemView.setOnClickListener(view -> {
@@ -61,8 +64,8 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.MyViewHolder
         holder.imageViewLike.setOnClickListener(view -> {
             int currentPosition = holder.getAdapterPosition();
             Log.d("Adapter", "Toggle Like: " + currentItem.getName());
-            currentItem.setLike(!currentItem.isLiked());
-            if (currentItem.isLiked())
+            currentItem.setLike(!currentItem.getLike());
+            if (currentItem.getLike())
                 Toast.makeText(view.getContext(), "I LOVE: " + currentItem.getName() + "s", Toast.LENGTH_SHORT).show();
             notifyItemChanged(currentPosition);
         });
